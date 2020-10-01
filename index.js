@@ -9,6 +9,11 @@ const cors=require("cors")
 const bodyParser=require("body-parser")
 app.use(bodyParser.json())
 app.use(cors())
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 client.connect(err => {
   const collection = client.db(`${process.env.DB_BASE}`).collection('majonerCollection');
 //   console.log("succsesfully connented too mongodb")
@@ -41,9 +46,7 @@ app.get("/Read",(req,res)=>{
 
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 app.listen(port||process.env.DB_PORT, () => {
   console.log(`Example app listening at http://localhost:${port}`)
